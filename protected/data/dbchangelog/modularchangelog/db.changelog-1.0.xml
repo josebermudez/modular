@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="vagrant (generated)" id="1422649767131-1">
+        <createTable tableName="administrador">
+            <column autoIncrement="true" name="adm_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="adm_usuario" type="TEXT"/>
+            <column name="adm_contrasenia" type="TEXT"/>
+            <column name="adm_emp_codigo" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-2">
+        <createTable tableName="afiliado">
+            <column autoIncrement="true" name="afi_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="afi_nombre" type="TEXT"/>
+            <column name="afi_direccion" type="TEXT"/>
+            <column name="afi_telefonos" type="TEXT"/>
+            <column name="afi_numerodocumento" type="TEXT"/>
+            <column name="afi_tipodocumento" type="TEXT"/>
+            <column name="afi_tipo" type="INT"/>
+            <column name="afi_horarios" remarks="Horarios de trabajo del afiliado" type="TEXT"/>
+            <column name="afi_ciu_codigo" remarks="Ciudad donde se ubica la oficina del afiliado" type="INT"/>
+            <column name="afi_usr_codigo" remarks="Código del usuario asignado al afiliado" type="INT"/>
+            <column name="afi_email" remarks="Correo electrónico del afiliado" type="VARCHAR(250)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-3">
+        <createTable tableName="afiliadoxempresa">
+            <column autoIncrement="true" name="axe_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="axe_afi_codigo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="axe_emp_codigo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-4">
+        <createTable tableName="campo">
+            <column autoIncrement="true" name="cam_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="cam_nombre" type="VARCHAR(255)"/>
+            <column name="cam_label" type="VARCHAR(255)"/>
+            <column name="cam_tipo" type="VARCHAR(255)"/>
+            <column name="cam_tablaasociada" type="VARCHAR(255)"/>
+            <column name="cam_keyllaveasociada" type="VARCHAR(255)"/>
+            <column name="cam_valorllaveasociada" type="VARCHAR(255)"/>
+            <column name="cam_etiqueta" type="VARCHAR(255)"/>
+            <column defaultValue="" name="cam_relacion" remarks="Nombre de la relación de la tabla" type="VARCHAR(160)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-5">
+        <createTable tableName="cartasgeneradas">
+            <column autoIncrement="true" name="cag_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="cag_emp_codigo" remarks="Código del empleado" type="INT"/>
+            <column name="cag_usr_codigo" remarks="Código del usuario" type="INT"/>
+            <column name="cag_empr_codigo" remarks="Código de la empresa" type="INT"/>
+            <column name="cag_archivo" remarks="Ruta del archivo creado" type="VARCHAR(400)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="cag_fechacreacion" remarks="Fecha de la creación" type="TIMESTAMP"/>
+            <column name="cag_mot_codigo" remarks="Código del motivo" type="INT"/>
+            <column name="cag_for_codigo" remarks="Código del formato usado" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-6">
+        <createTable tableName="ciudad">
+            <column autoIncrement="true" name="ciu_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ciu_nombre" type="VARCHAR(300)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="exm_fechacreacion" type="TIMESTAMP"/>
+            <column name="ciu_est_codigo" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-7">
+        <createTable tableName="contrato">
+            <column autoIncrement="true" name="con_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="con_fechainicio" remarks="Fecha de inicio del contrato" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_fechafin" remarks="Fecha de finalización del contrato" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_documento" remarks="Ruta del archivo del contrato" type="VARCHAR(250)"/>
+            <column name="con_contenido" remarks="Contenido del contrato" type="TEXT"/>
+            <column name="con_avisarvencimiento" remarks="Indica si se debe avisar del fin del contrato" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_avisarantesde" remarks="Numero de dia que se debe avisar antes de vencer el contrato" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_avisarjefe" remarks="indica si se debe alertar al jefe del vencimiento" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_avisarempleado" remarks="Indica si se debe avisar al empleado del vencimiento" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="con_fechacreacion" remarks="Fecha de creación del registro" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_fechaedicion" remarks="Fecha de edición del registro" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_enviarcorreelectronico" remarks="Indica si se debe enviar correo electrónico con el vencimiento" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_for_id" remarks="Código del formato a usar en la notificación" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_emp_id" remarks="Código del empleado del contrato" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="con_esindefinido" remarks="Indica si el contrato es indefinido" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-8">
+        <createTable tableName="documento">
+            <column autoIncrement="true" name="doc_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="doc_nombre" remarks="Ruta del archivo" type="VARCHAR(400)"/>
+            <column name="doc_usu_codigo" type="INT"/>
+            <column name="doc_emp_codigo" type="INT"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="doc_fechacreacion" remarks="Fecha de la creación" type="TIMESTAMP"/>
+            <column name="doc_nombrearchivo" remarks="Nombre original del archivo" type="VARCHAR(300)"/>
+            <column name="doc_nota" remarks="Nota sobre el archivo" type="TEXT"/>
+            <column defaultValueNumeric="0" name="doc_afi_codigo" remarks="Código de la empresa afiliada que sube el archivo" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-9">
+        <createTable tableName="empleado">
+            <column autoIncrement="true" name="emp_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="emp_nombre" type="TEXT"/>
+            <column name="emp_numerodocumento" type="TEXT"/>
+            <column name="emp_tipodocumento" type="TEXT"/>
+            <column name="emp_direccion" type="TEXT"/>
+            <column name="emp_telefonofijo" type="TEXT"/>
+            <column name="emp_telefonomovil" type="TEXT"/>
+            <column name="emp_estado" type="TEXT"/>
+            <column name="emp_emp_codigo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emp_usr_codigo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emp_email" remarks="Dirección de correo electrónico del empleado" type="VARCHAR(300)"/>
+            <column defaultValueNumeric="0" name="emp_esexempleado" remarks="Indica si es exempleado" type="BIT(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-10">
+        <createTable tableName="empresa">
+            <column autoIncrement="true" name="emp_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="emp_nombre" type="TEXT"/>
+            <column name="emp_direccion" type="TEXT"/>
+            <column name="emp_telefono" type="TEXT"/>
+            <column name="emp_usr_codigo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emp_ciu_codigo" remarks="Ciudad donde se ubicala empresa" type="INT"/>
+            <column name="emp_email" remarks="E-mail de la empresa" type="VARCHAR(200)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-11">
+        <createTable tableName="exempleado">
+            <column autoIncrement="true" name="exm_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="exm_emp_codigo" type="INT"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="exm_fechacreacion" type="TIMESTAMP"/>
+            <column name="exm_motivo" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-12">
+        <createTable tableName="formato">
+            <column autoIncrement="true" name="for_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="for_nombre" type="TEXT"/>
+            <column name="for_texto" type="TEXT"/>
+            <column name="for_emp_codigo" remarks="Código de la empresa dueña del formato" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="for_usu_codigo" remarks="Código del usuario que sube el formato" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="for_archivo" remarks="Nombre del archivo" type="VARCHAR(300)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="for_nombrearchivo" remarks="Nombre original del archivo" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="for_archivovalido" remarks="Indica si es un formato válido" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-13">
+        <createTable tableName="formatoxmotivo">
+            <column autoIncrement="true" name="fxm_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fxm_for_codigo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fxm_mot_codigo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-14">
+        <createTable tableName="modul4r_authassignment">
+            <column name="userid" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bizrule" type="TEXT"/>
+            <column name="data" type="TEXT"/>
+            <column name="itemname" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-15">
+        <createTable tableName="modul4r_authitem">
+            <column name="name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="bizrule" type="TEXT"/>
+            <column name="data" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-16">
+        <createTable tableName="modul4r_authitemchild">
+            <column name="parent" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="child" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-17">
+        <createTable tableName="modul4r_field">
+            <column autoIncrement="true" name="idfield" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fieldname" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longname" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="position" type="INT"/>
+            <column defaultValueNumeric="0" name="required" type="INT"/>
+            <column defaultValueNumeric="0" name="fieldtype" type="INT"/>
+            <column defaultValueNumeric="20" name="fieldsize" type="INT"/>
+            <column defaultValueNumeric="45" name="maxlength" type="INT"/>
+            <column defaultValueNumeric="0" name="showinreports" type="INT"/>
+            <column name="useregexp" type="VARCHAR(512)"/>
+            <column name="useregexpmsg" type="VARCHAR(512)"/>
+            <column name="predetvalue" type="MEDIUMBLOB"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-18">
+        <createTable tableName="modul4r_fieldvalue">
+            <column autoIncrement="true" name="idfieldvalue" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="iduser" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idfield" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="BLOB"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-19">
+        <createTable tableName="modul4r_session">
+            <column autoIncrement="true" name="idsession" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="iduser" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="BIGINT"/>
+            <column name="expire" type="BIGINT"/>
+            <column defaultValueNumeric="0" name="status" type="INT"/>
+            <column name="ipaddress" type="VARCHAR(45)"/>
+            <column defaultValueNumeric="0" name="usagecount" type="INT"/>
+            <column name="lastusage" type="BIGINT"/>
+            <column name="logoutdate" type="BIGINT"/>
+            <column name="ipaddressout" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-20">
+        <createTable tableName="modul4r_system">
+            <column autoIncrement="true" name="idsystem" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="largename" type="VARCHAR(45)"/>
+            <column defaultValueNumeric="30" name="sessionmaxdurationmins" type="INT"/>
+            <column defaultValueNumeric="10" name="sessionmaxsameipconnections" type="INT"/>
+            <column defaultValueNumeric="1" name="sessionreusesessions" remarks="1yes 0no" type="INT"/>
+            <column defaultValueNumeric="-1" name="sessionmaxsessionsperday" type="INT"/>
+            <column defaultValueNumeric="-1" name="sessionmaxsessionsperuser" type="INT"/>
+            <column defaultValueNumeric="0" name="systemnonewsessions" remarks="1yes 0no" type="INT"/>
+            <column defaultValueNumeric="0" name="systemdown" type="INT"/>
+            <column defaultValueNumeric="0" name="registerusingcaptcha" type="INT"/>
+            <column defaultValueNumeric="0" name="registerusingterms" type="INT"/>
+            <column name="terms" type="BLOB"/>
+            <column defaultValueNumeric="1" name="registerusingactivation" type="INT"/>
+            <column name="defaultroleforregistration" type="VARCHAR(64)"/>
+            <column name="registerusingtermslabel" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="registrationonlogin" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-21">
+        <createTable tableName="modul4r_user">
+            <column autoIncrement="true" name="iduser" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="regdate" type="BIGINT"/>
+            <column name="actdate" type="BIGINT"/>
+            <column name="logondate" type="BIGINT"/>
+            <column name="username" type="VARCHAR(64)"/>
+            <column name="email" type="VARCHAR(45)"/>
+            <column name="password" remarks="Hashed password" type="VARCHAR(64)"/>
+            <column name="authkey" remarks="llave de autentificacion" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="state" type="INT"/>
+            <column defaultValueNumeric="0" name="totalsessioncounter" type="INT"/>
+            <column defaultValueNumeric="0" name="currentsessioncounter" type="INT"/>
+            <column name="usr_emp_codigo" remarks="Código de la empresa donde esta el usuario" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-22">
+        <createTable tableName="motivo">
+            <column autoIncrement="true" name="mot_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="mot_nombre" type="TEXT"/>
+            <column name="mot_fechacreacion" type="TEXT"/>
+            <column name="mot_emp_codigo" type="INT"/>
+            <column name="mot_archivoformulario" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-23">
+        <createTable tableName="motivoxrol">
+            <column autoIncrement="true" name="mxr_codigo" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="mxr_mot_codigo" remarks="Codigo del motivo" type="INT"/>
+            <column name="mxr_rol_nombre" remarks="nombre del rol" type="VARCHAR(64)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="mxr_fechacreacion" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-24">
+        <addPrimaryKey columnNames="userid, itemname" constraintName="PRIMARY" tableName="modul4r_authassignment"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-25">
+        <addPrimaryKey columnNames="name" constraintName="PRIMARY" tableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-26">
+        <addPrimaryKey columnNames="parent, child" constraintName="PRIMARY" tableName="modul4r_authitemchild"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-27">
+        <addForeignKeyConstraint baseColumnNames="parent" baseTableName="modul4r_authitemchild" constraintName="crugeauthitemchild_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="name" referencedTableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-28">
+        <addForeignKeyConstraint baseColumnNames="child" baseTableName="modul4r_authitemchild" constraintName="crugeauthitemchild_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="name" referencedTableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-29">
+        <addForeignKeyConstraint baseColumnNames="axe_afi_codigo" baseTableName="afiliadoxempresa" constraintName="fk_afiliadoxempresa_afiliado1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="afi_codigo" referencedTableName="afiliado"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-30">
+        <addForeignKeyConstraint baseColumnNames="axe_emp_codigo" baseTableName="afiliadoxempresa" constraintName="fk_afiliadoxempresa_empresa1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="emp_codigo" referencedTableName="empresa"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-31">
+        <addForeignKeyConstraint baseColumnNames="emp_emp_codigo" baseTableName="empleado" constraintName="fk_empleado_empresa1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="emp_codigo" referencedTableName="empresa"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-32">
+        <addForeignKeyConstraint baseColumnNames="fxm_for_codigo" baseTableName="formatoxmotivo" constraintName="fk_formato_has_motivo_formato1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="for_codigo" referencedTableName="formato"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-33">
+        <addForeignKeyConstraint baseColumnNames="fxm_mot_codigo" baseTableName="formatoxmotivo" constraintName="fk_formato_has_motivo_motivo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="mot_codigo" referencedTableName="motivo"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-34">
+        <addForeignKeyConstraint baseColumnNames="itemname" baseTableName="modul4r_authassignment" constraintName="fk_modul4r_authassignment_modul4r_authitem1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="name" referencedTableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-35">
+        <addForeignKeyConstraint baseColumnNames="userid" baseTableName="modul4r_authassignment" constraintName="fk_modul4r_authassignment_user" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="iduser" referencedTableName="modul4r_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-36">
+        <addForeignKeyConstraint baseColumnNames="idfield" baseTableName="modul4r_fieldvalue" constraintName="fk_modul4r_fieldvalue_modul4r_field1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="idfield" referencedTableName="modul4r_field"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-37">
+        <addForeignKeyConstraint baseColumnNames="iduser" baseTableName="modul4r_fieldvalue" constraintName="fk_modul4r_fieldvalue_modul4r_user1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="iduser" referencedTableName="modul4r_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-38">
+        <addForeignKeyConstraint baseColumnNames="mot_emp_codigo" baseTableName="motivo" constraintName="fk_motivo_empresa1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="emp_codigo" referencedTableName="empresa"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-39">
+        <addForeignKeyConstraint baseColumnNames="mxr_mot_codigo" baseTableName="motivoxrol" constraintName="fk_motivoxrol_motivo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="mot_codigo" referencedTableName="motivo"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1422649767131-40">
+        <createIndex indexName="crugesession_iduser" tableName="modul4r_session" unique="false">
+            <column name="iduser"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

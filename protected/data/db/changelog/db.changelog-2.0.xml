@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	 
+	 <changeSet author="jjbermudez" id="123456-1">        
+		 <dropColumn 
+			columnName="mot_emp_codigo"				
+			tableName="motivo" /> 
+	 </changeSet>		 
+	 <changeSet author="jjbermudez" id="123456-2">     
+		<dropForeignKeyConstraint baseTableName="motivo" constraintName="fk_motivo_empresa1"/>
+	</changeSet>	 	 	 
+	<changeSet author="jjbermudez" id="123456-3">       
+		<renameColumn 
+				columnDataType="int"
+				newColumnName="mot_emp_codigo"
+				oldColumnName="empresa_emp_codigo"            
+				tableName="motivo"/>  
+     </changeSet>    
+     <changeSet author="jjbermudez" id="123456-4">      
+		<addForeignKeyConstraint 		
+			baseColumnNames="mot_emp_codigo"	
+            baseTableName="motivo"
+            constraintName="fk_motivo_empresa1"                        
+            onDelete="NO ACTION"
+            onUpdate="NO ACTION"
+            referencedColumnNames="emp_codigo"
+            referencedTableName="empresa"/>            
+      </changeSet>	 
+</databaseChangeLog>

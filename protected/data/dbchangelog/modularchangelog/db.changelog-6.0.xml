@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">   
+	<changeSet author="jbermudez" id="100006-1">
+		<createTable 
+				remarks="Lista de notificaciones de contratos"				
+				tableName="notificacionxcontrato">
+			<column name="nxc_id" type="numeric(10,0)">
+				<constraints primaryKey="true" primaryKeyName="contrato_pk" nullable="false"/>
+			</column>
+			<column name="nxc_con_id" type="INT" remarks="Codigo del contrato"/>
+			<column name="nxc_fechacreacion" type="TIMESTAMP" remarks="Fecha de la notificacion"/>
+			<column name="nxc_fechaedicion" type="TIMESTAMP" remarks="Fecha de edición del registro"/>
+			<column name="nxc_notificacionemail" type="numeric(1,0)" remarks="Indica si la notificacion fue por email"/>
+			<column name="nxc_notificacionnormal" type="numeric(1,0)" remarks="Indica si la notificacion fue por el aplicativo ventana modal"/>
+			<column name="nxc_usr_codigo" type="INT" remarks="Codigo del usuario en el sitema al que se le hace la notificacion"/>			
+			<column name="nxc_email" type="VARCHAR(300)" remarks="Email a donde se envia la notificacion"/>
+			<column name="nxc_contenidoemail" type="TEXT" remarks="Contenido del email que se envia en la notificacion"/>
+		</createTable>
+	</changeSet>
+	<changeSet author="jbermudez" id="100006-2">
+	<dropTable cascadeConstraints="true"            
+            tableName="licencia"/>
+            </changeSet>
+      <changeSet author="jbermudez" id="100006-3">
+		<createTable 
+				remarks="Licencias del sistema"				
+				tableName="licencia">
+			<column name="lic_id" type="numeric(10,0)">
+				<constraints primaryKey="true" primaryKeyName="licencia_pk" nullable="false"/>
+			</column>			
+			<column name="lic_fechacreacion" type="TIMESTAMP" remarks="Fecha de creacion del registro"/>
+			<column name="lic_fechaedicion" type="TIMESTAMP" remarks="Fecha de edición del registro"/>
+			<column name="lic_duracion" type="numeric(4,0)" remarks="Duracion de la licencia en dias"/>
+			<column name="lic_fechavencimiento" type="TIMESTAMP" remarks="Contenido del email que se envia en la notificacion"/>
+			<column name="lic_activa" type="numeric(1,0)" remarks="Indica el estado de la licencia"/>
+			<column name="lic_emp_codigo" type="INT" remarks="Codigo de la empresa dueña de la licencia"/>			
+			<column name="lic_usr_codigo" type="INT" remarks="Codigo del usuario que puede usar la licencia"/>			
+			<column name="lic_codigo" type="VARCHAR(23)" remarks="Codigo de la licencia"/>
+		</createTable>
+	</changeSet>
+	<changeSet author="jbermudez" id="100006-4">	
+		<addColumn 				
+				tableName="licencia">
+			<column name="lic_precio" type="numeric(10,2)" remarks="Indica el valor de la licencia" value="0"/>
+		</addColumn>
+    </changeSet>
+    <changeSet author="jbermudez" id="100006-5">	
+		<addColumn 				
+				tableName="licencia">
+			<column name="lic_esgratuita" type="numeric(1,0)" remarks="Indica si la licencia es gratuita" value="0"/>
+		</addColumn>
+    </changeSet>   
+	<changeSet author="jbermudez" id="100006-6">
+		<addAutoIncrement 
+				columnDataType="int"
+				columnName="lic_id"
+				incrementBy="1"				
+				startWith="1"
+				tableName="licencia"/>
+	</changeSet>	
+	<changeSet author="jbermudez" id="100006-7">	
+		<addColumn 				
+				tableName="contrato">
+			<column name="con_documentooriginal" type="varchar(150)" remarks="Nombre del archivo de contrato original que el usuario sube al sistema"/>
+		</addColumn>
+    </changeSet>   
+    <changeSet author="jbermudez" id="100006-8">	
+		<addColumn 				
+				tableName="empresa">
+			<column name="emp_jefepersonal" type="int" remarks="Código del empleado jefe de personal" value="0"/>
+		</addColumn>
+    </changeSet>
+    
+    <changeSet author="jbermudez" id="100006-9">
+		<addAutoIncrement 
+				columnDataType="int"
+				columnName="nxc_id"
+				incrementBy="1"				
+				startWith="1"
+				tableName="notificacionxcontrato"/>
+	</changeSet>
+</databaseChangeLog>

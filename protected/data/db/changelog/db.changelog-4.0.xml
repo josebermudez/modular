@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">	
+    <property name="now" value="now()" dbms="mysql"/> 
+	<changeSet author="jjbermudez" id="423456-1">  		 
+		<addColumn tableName="empleado">
+			<column name="emp_esexempleado" remarks="Indica si es exempleado" type="boolean" defaultValueBoolean="false"/>
+		</addColumn>
+	</changeSet>
+	<changeSet author="jjbermudez" id="423456-2">  		 
+		 <createTable 
+            remarks="Información del exempleado"            
+            tableName="exempleado">		
+			<column autoIncrement="true" name="exm_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>            
+			<column name="exm_emp_codigo" type="INT(10)"/>
+			<column name="exm_fechacreacion" type="TIMESTAMP" defaultValue="${now}"/>
+			<column name="exm_motivo" type="TEXT"/>			
+		</createTable>	    
+	 </changeSet>
+	 <changeSet author="jjbermudez" id="423456-3">  		 
+		 <createTable 
+            remarks="Motivos ligado a los roles"            
+            tableName="motivoxrol">		
+			<column autoIncrement="true" name="mxr_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>            
+			<column name="mxr_mot_codigo" type="INT(10)" remarks="Codigo del motivo"/>
+			<column name="mxr_rol_codigo" type="INT(10)" remarks="Codigo del rol"/>
+			<column name="mxr_fechacreacion" type="TIMESTAMP" defaultValue="${now}"/>			
+		</createTable>	    
+	 </changeSet>	 
+	  <changeSet author="jjbermudez" id="423456-4">      
+		<addForeignKeyConstraint 		
+			baseColumnNames="mxr_mot_codigo"	
+            baseTableName="motivoxrol"
+            constraintName="fk_motivoxrol_motivo1"                        
+            onDelete="NO ACTION"
+            onUpdate="NO ACTION"
+            referencedColumnNames="mot_codigo"
+            referencedTableName="motivo"/>            
+      </changeSet>	     
+	<changeSet author="liquibase-docs" id="423456-5">
+		<dropTable cascadeConstraints="true"			
+				tableName="motivoxrol"/>
+	</changeSet>
+	<changeSet author="jjbermudez" id="423456-6">  		 
+		 <createTable 
+            remarks="Motivos ligado a los roles"            
+            tableName="motivoxrol">		
+			<column autoIncrement="true" name="mxr_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>            
+			<column name="mxr_mot_codigo" type="INT(10)" remarks="Codigo del motivo"/>
+			<column name="mxr_rol_nombre" type="varchar(64)" remarks="nombre del rol"/>
+			<column name="mxr_fechacreacion" type="TIMESTAMP" defaultValue="${now}"/>			
+		</createTable>	    
+	 </changeSet>	 
+	  <changeSet author="jjbermudez" id="423456-7">      
+		<addForeignKeyConstraint 		
+			baseColumnNames="mxr_mot_codigo"	
+            baseTableName="motivoxrol"
+            constraintName="fk_motivoxrol_motivo1"                        
+            onDelete="NO ACTION"
+            onUpdate="NO ACTION"
+            referencedColumnNames="mot_codigo"
+            referencedTableName="motivo"/>            
+      </changeSet>	       	 
+</databaseChangeLog>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">	
+    <property name="now" value="now()" dbms="mysql"/> 			 	
+	 <changeSet author="jjbermudez" id="10123456-2">  		 
+		 <createTable 
+            remarks="Archivos subidos por los usuarios"            
+            tableName="documento">		
+			<column autoIncrement="true" name="doc_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>            
+			<column name="doc_nombre" type="VARCHAR(400)" remarks="Ruta del archivo" />
+			<column name="doc_usr_codigo" type="INT(10)" remarks="Código del usuario"/>
+			<column name="doc_empr_codigo" type="INT(10)" remarks="Código de la empresa"/>			
+			<column name="doc_fechacreacion" type="TIMESTAMP" defaultValue="${now}" remarks="Fecha de la creación"/>			
+		</createTable>	    
+	 </changeSet>	
+	 <changeSet author="jjbermudez" id="10123456-3">  		 
+		<addColumn tableName="documento">
+			<column name="doc_nombrearchivo" remarks="Nombre original del archivo" type="VARCHAR(300)" />
+		</addColumn>		
+	</changeSet>	 		
+	<changeSet author="jjbermudez" id="10123456-4">  		 
+		<addColumn tableName="documento">
+			<column name="doc_nota" remarks="Nota sobre el archivo" type="TEXT" />
+		</addColumn>		
+	</changeSet>	
+	<changeSet author="jjbermudez" id="10123456-5">       
+		<renameColumn 
+				columnDataType="INT(10)"
+				newColumnName="doc_usu_codigo"
+				oldColumnName="doc_usr_codigo"            
+				tableName="documento"/>  
+     </changeSet>   
+     <changeSet author="jjbermudez" id="10123456-6">       
+		<renameColumn 
+				columnDataType="INT(10)"
+				newColumnName="doc_emp_codigo"
+				oldColumnName="doc_empr_codigo"            
+				tableName="documento"/>  
+     </changeSet> 
+</databaseChangeLog>

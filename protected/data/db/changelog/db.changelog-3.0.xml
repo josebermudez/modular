@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">	 
+	 <changeSet author="jjbermudez" id="323456-1">  
+		 <createTable 
+            remarks="Campos configurables por los usuarios"            
+            tableName="campo">		
+			<column autoIncrement="true" name="cam_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+			<column name="cam_nombre" type="varchar(255)"/>
+			<column name="cam_label" type="varchar(255)"/>
+			<column name="cam_tipo" type="varchar(255)"/>
+			<column name="cam_tablaasociada" type="varchar(255)"/>
+			<column name="cam_keyllaveasociada" type="varchar(255)"/>
+			<column name="cam_valorllaveasociada" type="varchar(255)"/>
+			<column name="cam_etiqueta" type="varchar(255)"/>
+		</createTable>	    
+	 </changeSet>
+	 <changeSet author="jjbermudez" id="323456-2">
+		<addColumn 				
+				tableName="motivo">
+			<column name="mot_archivoformaulario" remarks="Nombre del archivo de formulario para el motivo" type="varchar(255)"/>
+		</addColumn>
+	</changeSet>
+	<changeSet author="jjbermudez" id="323456-3">       
+		<renameColumn 
+				columnDataType="varchar(255)"
+				newColumnName="mot_archivoformulario"
+				oldColumnName="mot_archivoformaulario"            
+				tableName="motivo"/>  
+     </changeSet>    
+	<changeSet author="jjbermudez" id="323456-4">
+		<addColumn 				
+				tableName="empleado">
+			<column name="emp_email" remarks="Dirección de correo electrónico del empleado" type="varchar(300)"/>
+		</addColumn>
+	</changeSet>
+	 		 	 
+</databaseChangeLog>

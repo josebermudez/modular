@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="jjbermudez (generated)" id="1398136160744-1">
+        <createTable tableName="administrador">
+            <column autoIncrement="true" name="adm_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="adm_usuario" type="TEXT"/>
+            <column name="adm_contrasenia" type="TEXT"/>
+            <column name="adm_emp_codigo" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-2">
+        <createTable tableName="afiliado">
+            <column autoIncrement="true" name="afi_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="afi_nombre" type="TEXT"/>
+            <column name="afi_direccion" type="TEXT"/>
+            <column name="afi_telefonos" type="TEXT"/>
+            <column name="afi_numerodocumento" type="TEXT"/>
+            <column name="afi_tipodocumento" type="TEXT"/>
+            <column name="afi_tipo" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-3">
+        <createTable tableName="afiliadoxempresa">
+            <column autoIncrement="true" name="axe_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="axe_afi_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="axe_emp_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-4">
+        <createTable tableName="carta">
+            <column autoIncrement="true" name="car_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="car_contenido" type="TEXT"/>
+            <column name="car_fechacreacion" type="TEXT"/>
+            <column name="car_emp_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-5">
+        <createTable tableName="empleado">
+            <column autoIncrement="true" name="emp_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="emp_nombre" type="TEXT"/>
+            <column name="emp_numerodocumento" type="TEXT"/>
+            <column name="emp_tipodocumento" type="TEXT"/>
+            <column name="emp_direccion" type="TEXT"/>
+            <column name="emp_telefonofijo" type="TEXT"/>
+            <column name="emp_telefonomovil" type="TEXT"/>
+            <column name="emp_estado" type="TEXT"/>
+            <column name="emp_emp_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emp_usr_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-6">
+        <createTable tableName="empresa">
+            <column autoIncrement="true" name="emp_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="emp_nombre" type="TEXT"/>
+            <column name="emp_direccion" type="TEXT"/>
+            <column name="emp_telefono" type="TEXT"/>
+            <column name="emp_usr_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-7">
+        <createTable tableName="formato">
+            <column autoIncrement="true" name="for_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="for_nombre" type="TEXT"/>
+            <column name="for_texto" type="TEXT"/>
+            <column name="for_emp_codigo" remarks="CÃ³digo de la empresa dueÃ±a del formato" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="for_usu_codigo" remarks="CÃ³digo del usuario que sube el formato" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="for_archivo" remarks="Nombre del archivo" type="VARCHAR(300)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="for_nombrearchivo" remarks="Nombre original del archivo" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-8">
+        <createTable tableName="formatoxmotivo">
+            <column autoIncrement="true" name="fxm_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fxm_for_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fxm_mot_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-9">
+        <createTable tableName="modul4r_authassignment">
+            <column name="userid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bizrule" type="TEXT"/>
+            <column name="data" type="TEXT"/>
+            <column name="itemname" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-10">
+        <createTable tableName="modul4r_authitem">
+            <column name="name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="bizrule" type="TEXT"/>
+            <column name="data" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-11">
+        <createTable tableName="modul4r_authitemchild">
+            <column name="parent" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="child" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-12">
+        <createTable tableName="modul4r_field">
+            <column autoIncrement="true" name="idfield" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fieldname" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longname" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="position" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="required" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="fieldtype" type="INT(10)"/>
+            <column defaultValueNumeric="20" name="fieldsize" type="INT(10)"/>
+            <column defaultValueNumeric="45" name="maxlength" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="showinreports" type="INT(10)"/>
+            <column name="useregexp" type="VARCHAR(512)"/>
+            <column name="useregexpmsg" type="VARCHAR(512)"/>
+            <column name="predetvalue" type="MEDIUMBLOB"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-13">
+        <createTable tableName="modul4r_fieldvalue">
+            <column autoIncrement="true" name="idfieldvalue" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="iduser" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idfield" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="BLOB"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-14">
+        <createTable tableName="modul4r_session">
+            <column autoIncrement="true" name="idsession" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="iduser" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="BIGINT(19)"/>
+            <column name="expire" type="BIGINT(19)"/>
+            <column defaultValueNumeric="0" name="status" type="INT(10)"/>
+            <column name="ipaddress" type="VARCHAR(45)"/>
+            <column defaultValueNumeric="0" name="usagecount" type="INT(10)"/>
+            <column name="lastusage" type="BIGINT(19)"/>
+            <column name="logoutdate" type="BIGINT(19)"/>
+            <column name="ipaddressout" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-15">
+        <createTable tableName="modul4r_system">
+            <column autoIncrement="true" name="idsystem" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="largename" type="VARCHAR(45)"/>
+            <column defaultValueNumeric="30" name="sessionmaxdurationmins" type="INT(10)"/>
+            <column defaultValueNumeric="10" name="sessionmaxsameipconnections" type="INT(10)"/>
+            <column defaultValueNumeric="1" name="sessionreusesessions" remarks="1yes 0no" type="INT(10)"/>
+            <column defaultValueNumeric="-1" name="sessionmaxsessionsperday" type="INT(10)"/>
+            <column defaultValueNumeric="-1" name="sessionmaxsessionsperuser" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="systemnonewsessions" remarks="1yes 0no" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="systemdown" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="registerusingcaptcha" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="registerusingterms" type="INT(10)"/>
+            <column name="terms" type="BLOB"/>
+            <column defaultValueNumeric="1" name="registerusingactivation" type="INT(10)"/>
+            <column name="defaultroleforregistration" type="VARCHAR(64)"/>
+            <column name="registerusingtermslabel" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="registrationonlogin" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-16">
+        <createTable tableName="modul4r_user">
+            <column autoIncrement="true" name="iduser" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="regdate" type="BIGINT(19)"/>
+            <column name="actdate" type="BIGINT(19)"/>
+            <column name="logondate" type="BIGINT(19)"/>
+            <column name="username" type="VARCHAR(64)"/>
+            <column name="email" type="VARCHAR(45)"/>
+            <column name="password" remarks="Hashed password" type="VARCHAR(64)"/>
+            <column name="authkey" remarks="llave de autentificacion" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="state" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="totalsessioncounter" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="currentsessioncounter" type="INT(10)"/>
+            <column name="usr_emp_codigo" remarks="CÃ³digo de la empresa donde esta el usuario" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-17">
+        <createTable tableName="motivo">
+            <column autoIncrement="true" name="mot_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="mot_nombre" type="TEXT"/>
+            <column name="mot_fechacreacion" type="TEXT"/>
+            <column name="mot_emp_codigo" type="INT(10)"/>
+            <column name="empresa_emp_codigo" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-18">
+        <addPrimaryKey columnNames="userid, itemname" constraintName="PRIMARY" tableName="modul4r_authassignment"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-19">
+        <addPrimaryKey columnNames="name" constraintName="PRIMARY" tableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-20">
+        <addPrimaryKey columnNames="parent, child" constraintName="PRIMARY" tableName="modul4r_authitemchild"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-21">
+        <addForeignKeyConstraint baseColumnNames="parent" baseTableName="modul4r_authitemchild" constraintName="crugeauthitemchild_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="name" referencedTableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-22">
+        <addForeignKeyConstraint baseColumnNames="child" baseTableName="modul4r_authitemchild" constraintName="crugeauthitemchild_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="name" referencedTableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-23">
+        <addForeignKeyConstraint baseColumnNames="axe_afi_codigo" baseTableName="afiliadoxempresa" constraintName="fk_afiliadoxempresa_afiliado1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="afi_codigo" referencedTableName="afiliado"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-24">
+        <addForeignKeyConstraint baseColumnNames="axe_emp_codigo" baseTableName="afiliadoxempresa" constraintName="fk_afiliadoxempresa_empresa1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="emp_codigo" referencedTableName="empresa"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-25">
+        <addForeignKeyConstraint baseColumnNames="car_emp_codigo" baseTableName="carta" constraintName="fk_carta_empleado1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="emp_codigo" referencedTableName="empleado"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-26">
+        <addForeignKeyConstraint baseColumnNames="emp_emp_codigo" baseTableName="empleado" constraintName="fk_empleado_empresa1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="emp_codigo" referencedTableName="empresa"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-27">
+        <addForeignKeyConstraint baseColumnNames="fxm_for_codigo" baseTableName="formatoxmotivo" constraintName="fk_formato_has_motivo_formato1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="for_codigo" referencedTableName="formato"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-28">
+        <addForeignKeyConstraint baseColumnNames="fxm_mot_codigo" baseTableName="formatoxmotivo" constraintName="fk_formato_has_motivo_motivo1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="mot_codigo" referencedTableName="motivo"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-29">
+        <addForeignKeyConstraint baseColumnNames="itemname" baseTableName="modul4r_authassignment" constraintName="fk_modul4r_authassignment_modul4r_authitem1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="name" referencedTableName="modul4r_authitem"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-30">
+        <addForeignKeyConstraint baseColumnNames="userid" baseTableName="modul4r_authassignment" constraintName="fk_modul4r_authassignment_user" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="iduser" referencedTableName="modul4r_user"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-31">
+        <addForeignKeyConstraint baseColumnNames="idfield" baseTableName="modul4r_fieldvalue" constraintName="fk_modul4r_fieldvalue_modul4r_field1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="idfield" referencedTableName="modul4r_field"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-32">
+        <addForeignKeyConstraint baseColumnNames="iduser" baseTableName="modul4r_fieldvalue" constraintName="fk_modul4r_fieldvalue_modul4r_user1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="iduser" referencedTableName="modul4r_user"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-33">
+        <addForeignKeyConstraint baseColumnNames="empresa_emp_codigo" baseTableName="motivo" constraintName="fk_motivo_empresa1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="emp_codigo" referencedTableName="empresa"/>
+    </changeSet>
+    <changeSet author="jjbermudez (generated)" id="1398136160744-34">
+        <createIndex indexName="crugesession_iduser" tableName="modul4r_session" unique="false">
+            <column name="iduser"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

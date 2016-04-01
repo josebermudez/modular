@@ -1,0 +1,82 @@
+Date: Wed, 11 Feb 2015 16:59:43 +0000
+To: jose.bermudez.correa@gmail.com
+From: Administrador <jose.bermudez.correa@gmail.com>
+Subject: =?UTF-8?Q?Recordatorio_de_vencimiento_contrato_empleado:_Fernando_Rodi?=
+ =?UTF-8?Q?=C3=B1o?=
+Message-ID: <e87a5e1e813e875cf856e98ba1b6d11e@precise32>
+X-Priority: 3
+X-Mailer: PHPMailer 5.2.8 (https://github.com/PHPMailer/PHPMailer/)
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="b1_e87a5e1e813e875cf856e98ba1b6d11e"
+Content-Transfer-Encoding: 8bit
+
+
+--b1_e87a5e1e813e875cf856e98ba1b6d11e
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Modular (Alfa)
+	
+	Señor(a):   jefe de personal.
+El sistema Modular (Alfa) ha detectado
+que el contrato del empleado: Fernando Rodiño en la empresa Apoyarte 
+Está proximo a vencerse, 24 de febrero de 2015
+Este recordatorio se enviará dentro de 6 horas al empleado vía correo electrónico, si desea cancelar el envio ingrese Aqui.
+Este recordatorio se enviará durante días 3 y despues se desactivará el recordatorio.
+
+	
+	
+		Copyright © 2015 Modular (Alfa).
+		Todos los derechos reservados.
+
+
+--b1_e87a5e1e813e875cf856e98ba1b6d11e
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+
+	<!-- blueprint CSS framework -->
+	<link rel="stylesheet" type="text/css" href="/css/screen.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" />
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/form.css" />
+
+	<title>Modular (Alfa) - YiiMailer</title>
+</head>
+<body>
+<div class="container" id="page">
+
+	<div id="header">
+		<div id="logo">Modular (Alfa)</div>
+	</div><!-- header -->
+	<p>Señor(a):   jefe de personal.</p>
+<p>El sistema Modular (Alfa) ha detectado
+que el contrato del empleado: <strong>Fernando Rodiño</strong> en la empresa Apoyarte </p>
+<p>Está proximo a vencerse, <strong>24 de febrero de 2015</strong></p>
+<p>Este recordatorio se enviará dentro de 6 horas al empleado vía correo electrónico, si desea cancelar el envio ingrese <a href="https://www.modular.com.co/empleado/empleado/update/id/21">Aqui</a>.</p>
+<p>Este recordatorio se enviará durante días 3 y despues se desactivará el recordatorio.</p>
+
+	<div class="clear"></div>
+	<div id="footer">
+		Copyright &copy; 2015 Modular (Alfa).<br/>
+		Todos los derechos reservados.<br/>		
+	</div><!-- footer -->
+
+</div><!-- page -->
+
+</body>
+</html>
+
+
+
+--b1_e87a5e1e813e875cf856e98ba1b6d11e--

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">	
+    <property name="now" value="now()" dbms="mysql"/> 	
+	<changeSet author="jjbermudez" id="523456-1">  		 
+		 <createTable 
+            remarks="Ciudades"            
+            tableName="ciudad">		
+			<column autoIncrement="true" name="ciu_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>            
+			<column name="ciu_nombre" type="varchar(300)"/>
+			<column name="exm_fechacreacion" type="TIMESTAMP" defaultValue="${now}"/>
+			<column name="ciu_est_codigo" type="INT(10)"/>			
+		</createTable>	    
+	 </changeSet>	
+	 <changeSet author="jjbermudez" id="523456-2">  		 
+		<addColumn tableName="empresa">
+			<column name="emp_ciu_codigo" remarks="Ciudad donde se ubicala empresa" type="INT(10)" />
+		</addColumn>
+	</changeSet>	 
+</databaseChangeLog>

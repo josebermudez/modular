@@ -1,0 +1,1 @@
+java -jar liquibase-3.3.2-bin/liquibase.jar --driver=org.postgresql.Driver --classpath=postgresql-9.3-1102.jdbc3.jar --url=jdbc:postgresql://localhost:5433/demosolati --username=root --password=root --changeLogFile=adminfosmartchangelog/adminfosmart.db.changelog.master.xml --contexts=nuevo update

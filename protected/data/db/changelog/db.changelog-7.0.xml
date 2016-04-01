@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">	
+    <property name="now" value="now()" dbms="mysql"/> 		
+	 <changeSet author="jjbermudez" id="723456-1">  		 
+		 <createTable 
+            remarks="Lista de cartas generadas"            
+            tableName="cartasgeneradas">		
+			<column autoIncrement="true" name="cge_codigo" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>            
+			<column name="cag_emp_codigo" type="INT(10)" remarks="Código del empleado" />
+			<column name="cag_usr_codigo" type="INT(10)" remarks="Código del usuario"/>
+			<column name="cag_empr_codigo" type="INT(10)" remarks="Código de la empresa"/>
+			<column name="cag_archivo" type="VARCHAR(400)" remarks="Ruta del archivo creado"/>
+			<column name="cag_fechacreacion" type="TIMESTAMP" defaultValue="${now}" remarks="Fecha de la creación"/>			
+		</createTable>	    
+	 </changeSet>		 
+	 <changeSet author="jjbermudez" id="723456-2">  		 
+		<addColumn tableName="cartasgeneradas">
+			<column name="cag_mot_codigo" remarks="Código del motivo" type="INT(10)" />
+		</addColumn>
+		<addColumn tableName="cartasgeneradas">
+			<column name="cag_for_codigo" remarks="Código del formato usado" type="INT(10)" />
+		</addColumn>
+	</changeSet>	 
+	<changeSet author="jjbermudez" id="723456-3">       
+		<renameColumn 
+				columnDataType="INT(10)"
+				newColumnName="cag_codigo"
+				oldColumnName="cge_codigo"            
+				tableName="cartasgeneradas"/>  
+     </changeSet>   
+     <changeSet author="jjbermudez" id="723456-4">  		 
+		<addColumn tableName="empresa">
+			<column name="emp_email" remarks="E-mail de la empresa" type="VARCHAR(200)" />
+		</addColumn>		
+	</changeSet>	 
+</databaseChangeLog>

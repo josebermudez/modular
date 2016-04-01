@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">   
+	<changeSet author="jbermudez" id="100004-1">
+		<createTable 
+				remarks="Licencias del sistema"				
+				tableName="licencia">
+			<column name="nxc_id" type="numeric(10,0)">
+				<constraints primaryKey="true" primaryKeyName="contrato_pk" nullable="false"/>
+			</column>
+			<column name="nxc_con_id" type="INT" remarks="Codigo del contrato"/>
+			<column name="nxc_fechacreacion" type="TIMESTAMP" remarks="Fecha de la notificacion"/>
+			<column name="nxc_fechaedicion" type="TIMESTAMP" remarks="Fecha de edición del registro"/>
+			<column name="nxc_notificacionemail" type="numeric(1,0)" remarks="Indica si la notificacion fue por email"/>
+			<column name="nxc_notificacionnormal" type="numeric(1,0)" remarks="Indica si la notificacion fue por el aplicativo ventana modal"/>
+			<column name="nxc_usr_codigo" type="INT" remarks="Codigo del usuario en el sitema al que se le hace la notificacion"/>			
+			<column name="nxc_email" type="VARCHAR(300)" remarks="Email a donde se envia la notificacion"/>
+			<column name="nxc_contenidoemail" type="TEXT" remarks="Contenido del email que se envia en la notificacion"/>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">	
+    <property name="now" value="now()" dbms="mysql"/> 			 	
+	 <!--<changeSet author="jjbermudez" id="923456-2">  		 
+		<addColumn tableName="afiliado">
+			<column name="afi_usr_codigo" remarks="Código del usuario asignado al afiliado" type="INT(10)" />
+		</addColumn>		
+	</changeSet>	 	-->
+	<changeSet author="jjbermudez" id="923456-3">  		 
+		<addColumn tableName="afiliado">
+			<column name="afi_email" remarks="Correo electrónico del afiliado" type="VARCHAR(250)" />
+		</addColumn>		
+	</changeSet>	 	
+</databaseChangeLog>

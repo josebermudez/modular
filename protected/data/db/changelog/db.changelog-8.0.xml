@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">	
+    <property name="now" value="now()" dbms="mysql"/> 			 	
+	 <changeSet author="jjbermudez" id="823456-2">  		 
+		<addColumn tableName="formato">
+			<column name="for_archivovalido" remarks="Indica si es un formato válido" type="boolean" defaultValueBoolean="false" />
+		</addColumn>		
+	</changeSet>	 
+	<changeSet author="jjbermudez" id="823456-3">        
+		 <dropColumn 
+			columnName="for_archivovalido"				
+			tableName="formato" /> 
+	 </changeSet>		
+	  <changeSet author="jjbermudez" id="823456-4">  		 
+		<addColumn tableName="formato">
+			<column name="for_archivovalido" remarks="Indica si es un formato válido" type="INT(1)" defaultValueBoolean="0" />
+		</addColumn>		
+	</changeSet>
+</databaseChangeLog>
