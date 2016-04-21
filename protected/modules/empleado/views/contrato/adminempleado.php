@@ -49,6 +49,18 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
 	'columns'=>array(		
 		'con_fechainicio',
 		'con_fechafin',	
+        array(
+                'name'=>'diasEmpleado',
+                //call the method 'gridUniqueProductName' of the controller
+                //the params extracted to the method are $data (=the current rowdata) and $row (the row index)
+                'value'=>array($this,'diasEmpleado')
+        ),
+        array(
+                'name'=>'contratoProximoAVencer',
+                //call the method 'gridUniqueProductName' of the controller
+                //the params extracted to the method are $data (=the current rowdata) and $row (the row index)
+                'value'=>array($this,'proximoAVencerse')
+        ),	       
 		 array(
 			'class' => 'bootstrap.widgets.TbToggleColumn',
 			'toggleAction' => '/empleado/contrato/terminar',
@@ -131,7 +143,7 @@ Yii::app()->clientScript->registerScript("generarcartanotificacion",
 	{
 		console.log(values);
 		js:bootbox.confirm('Desea generar la carta de notificación para los contratos:?', function(confirmed){
-			window.open('".Yii::app()->createUrl("empleado/contrato/crearDocumentoNotificacion")."/id/'+values.con_id);
+			window.open('".Yii::app()->createUrl("empleado/contrato/crearDocumentoNotificacion")."/id/'+values);
 			console.log('Genera la carta')
 		})
 	} 

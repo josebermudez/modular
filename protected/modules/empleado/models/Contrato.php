@@ -24,6 +24,10 @@ class Contrato extends CActiveRecord
 	protected $_strFechaInicial;
 	
 	protected $_strFechaFinal;
+	
+	public $diasEmpleado;
+	
+	public $contratoProximoAVencer;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -185,6 +189,10 @@ class Contrato extends CActiveRecord
 	{
 		return $this->_contratoProximoAVencer;
 	}
+	
+	
+	
+	
 	
 	public function diasParaVencerse()
 	{

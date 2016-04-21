@@ -229,11 +229,13 @@ class FormatoController extends Controller
 		if (!empty($_FILES)) {
 			$file = $_FILES['Formato'];
 			$tempFile = $file['tmp_name']['for_archivo'];
-			$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
+			$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;						
 			$infoArchivo = pathinfo($file['name']['for_archivo']);		
 			$strId = uniqid();	
 			$targetFile =  $targetPath.$strId.'.'.$infoArchivo['extension'];
-			
+			if (file_exists($targetPath) == false) {
+			    mkdir($targetPath);
+			} 
 			if( move_uploaded_file($tempFile,$targetFile) )
 			{								
 				$model=new Formato;

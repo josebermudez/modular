@@ -255,4 +255,29 @@ class ContratoController extends Controller
 	    }
 	    
 	}
+	/**
+	 * Calcula los dias desde el unicio de contrato
+	 * @param unknown $data
+	 * @param unknown $row
+	 */
+	protected function diasEmpleado($data,$row)
+	{
+	    if($data->getAttribute('con_terminado') === true) {
+	            $date1 = new DateTime($data->getAttribute('_strFechaFinal'));
+	    } else{
+	        $date1 = new DateTime(date('Y-m-d H:i:s'));
+	    }	    	    
+	    $date2 = new DateTime($data->getAttribute('_strFechaInicial'));
+	    $diff = $date2->diff($date1)->format("%a");	    
+	    return $diff;
+	}
+	
+	protected function proximoAVencerse($data,$row)
+	{	    
+	    $salida = '<span class="icon-ok-circle"></span>';
+	    if($data->getAttribute('_contratoProximoAVencer') === true) {
+	        $salida = '<span class="icon-fire"></span>';
+	    }
+	    return $salida;	    
+	}
 }
